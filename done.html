@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Maison Bleue | Reservation Confirmed</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lato:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --med-blue: #0047AB;        
+      --terracotta: #D98A6C;      
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Lato', sans-serif;
+      --charcoal: #1F2421;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      background-color: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    /* Hero & Header Layout */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                  url('BG.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0));
+      z-index: 100;
+    }
+
+    .brand-logo a {
+      color: #FFFFFF;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .brand-logo a:hover {
+      color: var(--terracotta);
+    }
+
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    .btn-reserve {
+      background-color: var(--med-blue);
+      color: #FFFFFF;
+      padding: 12px 26px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      border: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-reserve:hover {
+      background-color: var(--terracotta);
+    }
+
+    /* Confirmation Card */
+    .registration-wrapper {
+      width: 90%;
+      max-width: 480px;
+      margin: auto;
+      border-radius: 16px;
+      background-color: #FFFFFF;
+      padding: 50px 35px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+
+    .section-title {
+      color: var(--med-blue);
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .registration-wrapper p {
+      color: #666666;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background-color: var(--med-blue);
+      color: #FFFFFF;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-sizing: border-box;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--terracotta);
+      box-shadow: 0 8px 20px rgba(217, 138, 108, 0.3);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .registration-wrapper {
+        padding: 40px 25px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-container">
+    <!-- Header Navigation -->
+    <nav class="nav-bar">
+      <div class="brand-logo">
+        <a href="index.html">Casa Maison Bleue</a>
+      </div>
+
+      <div class="nav-right-group">
+        <div class="nav-links">
+          <a href="about.html">About Us</a>
+          <a href="help.html">Help Center</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
+
+        <a href="book1.html" class="btn-reserve">Reserve Your Stay</a>
+      </div>
+    </nav>
+    
+    <!-- Confirmation Card Content -->
+    <main class="registration-wrapper">
+      <h1 class="section-title">Reservation Complete</h1>
+      <p>Thank you for reserving with us!</p>
+      <a href="index.html" class="btn-submit">Return Home</a>
+    </main>
+
+    <div></div>
+  </div>
+
+</body>
+</html>

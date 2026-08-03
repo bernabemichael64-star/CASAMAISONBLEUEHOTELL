@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Maison Bleue | Luxury Hotel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lato:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --med-blue: #0047AB;        
+      --terracotta: #D98A6C;      
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Lato', sans-serif;
+      --charcoal: #1F2421;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      background-color: #FFFFFF;
+    }
+
+    .hero-container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
+                  url('BG.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 50px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0));
+    }
+
+    .nav-links a {
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      margin-right: 25px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    .brand-logo a {
+      color: #FFFFFF;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .brand-logo a:hover {
+      color: var(--terracotta);
+      text-decoration: none;    
+    }
+
+    .btn-reserve {
+      background-color: var(--med-blue);
+      color: #FFFFFF;
+      padding: 12px 26px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-reserve:hover {
+      background-color: var(--terracotta);
+    }
+
+    .section-title {
+      color: var(--med-blue);
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .registration-wrapper {
+      width: 100%;
+      max-width: 450px;
+      margin: 40px auto 60px auto;
+      border-radius: 12px;
+      background-color: #FFFFFF;
+      padding: 40px 30px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .registration-wrapper p {
+      text-align: center;
+      color: gray;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+    }
+
+    .registration-wrapper form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .registration-wrapper input[type="text"],
+    .registration-wrapper input[type="tel"],
+    .registration-wrapper input[type="email"],
+    .registration-wrapper input[type="date"],
+    .registration-wrapper input[type="time"],
+    .registration-wrapper input[type="password"] {
+      width: 100%;
+      padding: 12px 15px 12px 40px;
+      border: 2px solid cornflowerblue;
+      border-radius: 10px;
+      box-sizing: border-box;
+      background-repeat: no-repeat;
+      background-position: 12px center;
+      background-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .registration-wrapper input.input-name,
+    .registration-wrapper input.input-user {
+      background-image: url('user.png');
+    }
+
+    .registration-wrapper input.input-contact {
+      background-image: url('contact.png');
+    }
+
+    .registration-wrapper input.input-email {
+      background-image: url('email.png');
+    }
+
+    .registration-wrapper input.input-date,
+    .registration-wrapper input.input-time {
+      background-image: url('pass.png'); 
+    }
+
+    .registration-wrapper select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid cornflowerblue;
+      border-radius: 10px;
+      background-color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    /* Target the anchor styled as a submit button properly */
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background-color: royalblue;
+      color: white;
+      padding: 14px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      font-family: "Century Gothic", sans-serif;
+      font-weight: 600;
+      box-sizing: border-box;
+    }
+
+    .btn-submit:hover {
+      background-color: #003399;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      text-decoration: none;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 20px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .registration-wrapper {
+        width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+ <div class="hero-container">
+    <nav class="nav-bar">
+      <div class="nav-links">
+        <a href="about.html">About Us</a>
+        <a href="help.html">Help Center</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="feedback.html">Feedback</a>
+      </div>
+
+      <div class="brand-logo">
+        <a href="index.html">CASA MAISON BLEUE</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="book1.html" class="btn-reserve">Reserve Your Stay</a>
+      </div>
+    </nav>
+    
+    <div class="registration-wrapper">
+      <h2 class="section-title">SUBMMITED!</h2>
+      <p>THANK YOU FOR TIME!</p>
+      <form>
+        <a href="index.html" class="btn-submit">HOME</a>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

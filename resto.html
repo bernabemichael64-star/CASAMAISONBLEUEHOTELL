@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Maison Bleue | Luxury Hotel & Fine Dining</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --med-blue: #0047AB;        
+      --terracotta: #D98A6C;      
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Lato', sans-serif;
+      --charcoal: #1F2421;
+      --light-bg: #FAFAFA;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      background-color: #FFFFFF;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* Hero & Header Navigation */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 85vh;
+      min-height: 550px;
+      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
+                  url('BG.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0));
+      z-index: 100;
+    }
+
+    .brand-logo a {
+      color: #FFFFFF;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .brand-logo a:hover {
+      color: var(--terracotta);
+    }
+
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    .btn-reserve {
+      background-color: var(--med-blue);
+      color: #FFFFFF;
+      padding: 12px 26px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      border: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-reserve:hover {
+      background-color: var(--terracotta);
+    }
+
+    .hero-center-content {
+      text-align: center;
+      color: #FFFFFF;
+      margin-bottom: 80px;
+      padding: 0 20px;
+    }
+
+    .hero-center-content .subtitle {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+      color: #EFECE6;
+    }
+
+    .hero-center-content h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    /* Dining Content Section */
+    .dining-section {
+      background-color: var(--light-bg);
+      padding: 80px 30px;
+    }
+
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 50px;
+      align-items: flex-start;
+    }
+
+    /* Animated Slider Wrapper */
+    .spa-slider-wrapper {
+      flex: 0 0 420px;
+      position: relative;
+      width: 420px;
+      height: 420px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #000000;
+    }
+
+    .spa-slider-wrapper:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(0, 71, 171, 0.12);
+    }
+
+    /* Smooth Crossfade Transitions */
+    .spa-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    }
+
+    .spa-slide.active-slide {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .spa-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+      z-index: 10;
+    }
+
+    .slider-btn:hover {
+      background-color: var(--terracotta);
+    }
+
+    .prev-btn { left: 15px; }
+    .next-btn { right: 15px; }
+
+    /* Dining Details */
+    .dining-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-subtitle {
+      color: var(--terracotta);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .section-title {
+      color: var(--med-blue);
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+    }
+
+    .hours-block {
+      background: #FFFFFF;
+      border-left: 3px solid var(--terracotta);
+      padding: 15px 20px;
+      margin-bottom: 25px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #555555;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .gallery-description {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #444444;
+      margin-bottom: 20px;
+    }
+
+    .feature-list {
+      list-style: none;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #444444;
+      margin-bottom: 25px;
+    }
+
+    .feature-list li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .feature-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--med-blue);
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .menu-item-title {
+      color: var(--charcoal);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .menu-item-desc {
+      display: block;
+      color: #666666;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .btn-secondary {
+      align-self: flex-start;
+      margin-top: 15px;
+      padding: 14px 32px;
+      background-color: transparent;
+      color: var(--charcoal);
+      border: 1px solid var(--charcoal);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--med-blue);
+      border-color: var(--med-blue);
+      color: #FFFFFF;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 8px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: #FFFFFF;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+    .close:hover {
+      color: var(--terracotta);
+    }
+
+    img.clickable {
+      cursor: pointer;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: var(--charcoal);
+      color: #FFFFFF;
+      padding: 70px 0 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand h2 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 15px;
+      color: #FFFFFF;
+    }
+
+    .footer-brand p {
+      color: #A0A0A0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+      color: var(--terracotta);
+    }
+
+    .footer-col p {
+      color: #C0C0C0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+      color: #C0C0C0;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 25px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      color: #888888;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .content-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .spa-slider-wrapper {
+        flex: none;
+        width: 100%;
+        max-width: 500px;
+        height: 380px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-center-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .dining-section {
+        padding: 40px 20px;
+      }
+
+      .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero-container">
+    <nav class="nav-bar">
+      <div class="brand-logo">
+        <a href="index.html">Casa Maison Bleue</a>
+      </div>
+
+      <div class="nav-right-group">
+        <div class="nav-links">
+          <a href="about.html">About Us</a>
+          <a href="help.html">Help Center</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
+
+        <a href="book1.html" class="btn-reserve">Reserve Your Stay</a>
+      </div>
+    </nav>
+
+    <div class="hero-center-content">
+      <span class="subtitle">A Private Seaside Sanctuary</span>
+      <h1>Where Time Slows Down</h1>
+    </div>
+
+    <div></div>
+  </header>
+
+  <!-- Dining Section -->
+  <main class="dining-section">
+    <div class="content-container">
+      
+      <!-- Restaurant Image Slider -->
+      <div class="spa-slider-wrapper">
+        <div class="spa-slide active-slide">
+          <img src="resto.png" alt="Cliffside Fine Dining Terrace" class="clickable">
+        </div>
+        <div class="spa-slide">
+          <img src="resto1.png" alt="Elegant Dining Interior" class="clickable">
+        </div>
+        <div class="spa-slide">
+          <img src="menu1.png" alt="Curated Gourmet Menu & Wine Display" class="clickable">
+        </div>
+        <button class="slider-btn prev-btn" aria-label="Previous Slide" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" aria-label="Next Slide" onclick="changeSlide(1)">&#10095;</button>
+      </div>
+
+      <!-- Restaurant Description & Features -->
+      <div class="dining-details">
+        <span class="section-subtitle">Fine Dining</span>
+        <h2 class="section-title">Restaurant & Coastal Gastronomy</h2>
+
+        <div class="hours-block">
+          <strong>Operating Hours:</strong><br>
+          • Breakfast: 7:00 AM – 10:30 AM<br>
+          • Lunch Session: 12:00 PM – 2:30 PM<br>
+          • Dinner & Sunset Session: 6:00 PM – 10:30 PM
+        </div>
+
+        <p class="gallery-description">
+          <strong>Casa Maison Bleue Fine Dining</strong> delivers an elite culinary experience situated on a cliffside coastal terrace in El Nido. Designed for guests seeking ultimate sophistication and romantic ambiance, the restaurant pairs breathtaking views of Bacuit Bay with meticulous tablescapes, ambient evening light, and curated culinary service.
+        </p>
+
+        <span class="section-subtitle" style="margin-top: 15px;">Signature Features & Atmosphere</span>
+        <ul class="feature-list">
+          <li><strong>Dine by the Edge:</strong> Open-air terrace seating perched right on the cliffside, offering sweeping, unobstructed island and sunset vistas.</li>
+          <li><strong>Architectural Charm:</strong> Framed by authentic stone arches, warm wall sconces, and lush tropical bougainvillea accents.</li>
+          <li><strong>Fine Linens & Gold Cutlery:</strong> Tables draped in crisp, white linen topped with gold-finish flatware and delicate crystal stemware.</li>
+          <li><strong>Casa Maison Bleue Signature:</strong> An elegant entrance featuring hand-painted ceramic tile signage, a solid carved wood door, and a polished brass crest plaque.</li>
+          <li><strong>Evening Ambiance:</strong> Soft, glowing candle lanterns positioned on stone parapets, creating a warm, romantic atmosphere as twilight falls.</li>
+          <li><strong>In-House Sommelier Selection:</strong> A glass-fronted, temperature-controlled wine display built directly into the stone architecture, featuring premier local and international vintages.</li>
+        </ul>
+		
+        <span class="section-subtitle" style="margin-top: 15px;">Curated Tasting Menu</span>
+        <ul class="feature-list">
+          <li>
+            <span class="menu-item-title">Amuse-Bouche — Davao Mango & Sea Urchin Tartlet</span>
+            <span class="menu-item-desc">A delicate, buttery pastry shell filled with rich, creamy sea urchin (uni) harvested from local waters, balanced by the sweet acidity of ripe Davao mangoes and finished with translucent pearls of refreshing calamansi caviar.</span>
+          </li>
+          <li>
+            <span class="menu-item-title">Poisson (Fish Course) — Pan-Seared Palawan Lapu-Lapu</span>
+            <span class="menu-item-desc">Sustainably caught local red grouper pan-seared to crisp perfection, resting on a velvet bed of coconut-latik foam and nutty native wild rice, delivering a modern coastal interpretation of traditional island warmth.</span>
+          </li>
+          <li>
+            <span class="menu-item-title">Viande (Meat Course) — Slow-Roasted Batangas Wagyu Ribeye</span>
+            <span class="menu-item-desc">Melt-in-your-mouth Batangas Wagyu beef slow-roasted over low heat, glazed with an aromatic reduction of rich local Kapeng Barako (coffee), and accented with fresh garden herbs for a bold, savory finish.</span>
+          </li>
+          <li>
+            <span class="menu-item-title">Dessert — Guimaras Mango & Passion Fruit Soufflé</span>
+            <span class="menu-item-desc">An airy, golden soufflé made from world-renowned sweet Guimaras mangoes and tart passion fruit, crowned with delicate edible gold leaf and accompanied by a fragrant, floral sampaguita-infused sorbet.</span>
+          </li>
+        </ul>
+
+        <a href="table.html" class="btn-secondary">Reserve Your Table</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Image Lightbox Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="expandedImg" alt="Enlarged Restaurant View">
+  </div>
+
+  <!-- Standard Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>Casa Maison Bleue</h2>
+          <p>A luxury cliffside sanctuary blending European refinement with the breathtaking island beauty of El Nido, Palawan.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Mission</h4>
+          <p>To provide an unparalleled tropical sanctuary where guests can disconnect, rejuvenate, and experience timeless coastal elegance in absolute privacy.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Socials</h4>
+          <ul>
+            <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Location</h4>
+          <p>
+            Cliffside Drive, Sitio Horizon<br>
+            Brgy. Corong-Corong, El Nido<br>
+            Palawan, Philippines
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Casa Maison Bleue Hotel. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>   
+    // Modal Lightbox functionality
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("expandedImg");
+    const closeBtn = document.querySelector(".close");
+    const images = document.querySelectorAll('img.clickable');
+
+    images.forEach(img => {
+      img.addEventListener('click', function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        modalImg.alt = this.alt;
+      });
+    });
+      
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === "Escape") {
+        modal.style.display = "none";
+      }
+    });
+
+    // Image Slider functionality with Crossfade
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.spa-slide');
+
+    function changeSlide(n) {
+      slides[currentSlideIndex].classList.remove('active-slide');
+      currentSlideIndex = (currentSlideIndex + n + slides.length) % slides.length;
+      slides[currentSlideIndex].classList.add('active-slide');
+    }
+  </script>
+</body>
+</html>

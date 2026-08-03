@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Maison Bleue | Luxury Resort & Sanctuary</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --med-blue: #0047AB;        
+      --terracotta: #D98A6C;      
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Lato', sans-serif;
+      --charcoal: #1F2421;
+      --light-bg: #F9F8F6;
+      --border-color: #EFECE6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      background-color: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HERO SECTION */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 85vh;
+      min-height: 550px;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                  url('BG.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* HEADER / NAV BAR LAYOUT */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0));
+      gap: 20px;
+      position: relative;
+      z-index: 100;
+    }
+
+    /* Brand Logo on Far Left */
+    .brand-logo a {
+      color: #FFFFFF;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    .brand-logo a:hover {
+      color: var(--terracotta);
+    }
+
+    /* Right Navigation Group */
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    .btn-reserve {
+      background-color: var(--med-blue);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      white-space: nowrap;
+      display: inline-block;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-reserve:hover {
+      background-color: var(--terracotta);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .hero-center-content {
+      text-align: center;
+      color: #FFFFFF;
+      padding: 0 20px;
+      margin-bottom: 80px;
+    }
+
+    .hero-center-content .subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+      color: #EFECE6;
+    }
+
+    .hero-center-content h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* GALLERY SECTION */
+    .gallery {
+      background-color: #FFFFFF;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      color: var(--terracotta);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      color: var(--med-blue);
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .gallery-description {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #444444;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* FEATURE SECTIONS */
+    .feature-section {
+      padding: 80px 0;
+    }
+
+    .feature-section.bg-gray {
+      background-color: var(--light-bg);
+    }
+
+    .feature-grid {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .feature-text {
+      flex: 1;
+    }
+
+    .feature-text .gallery-description {
+      text-align: left;
+      margin-bottom: 25px;
+      margin-left: 0;
+    }
+
+    .feature-text .section-subtitle {
+      text-align: left;
+    }
+
+    .feature-text .section-title {
+      text-align: left;
+    }
+
+    /* SLIDER & IMAGE STYLING */
+    .spa-slider-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      height: 420px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .spa-slider-wrapper:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 35px rgba(0, 71, 171, 0.15);
+    }
+
+    .spa-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    }
+
+    .spa-slide.active-slide {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .spa-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .spa-slider-wrapper:hover .spa-slide img {
+      transform: scale(1.03);
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 50%;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 10;
+    }
+
+    .slider-btn:hover {
+      background-color: var(--terracotta);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .prev-btn { left: 15px; }
+    .next-btn { right: 15px; }
+
+    /* ROOM CARDS GRID */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .room-card {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .room-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 35px rgba(0, 71, 171, 0.12);
+    }
+
+    .room-img-container {
+      overflow: hidden;
+      height: 250px;
+      position: relative;
+    }
+
+    .room-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .room-card:hover .room-img {
+      transform: scale(1.05);
+    }
+
+    .room-details {
+      padding: 30px 25px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .room-tag {
+      color: #5B6E58;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+
+    .room-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+    }
+
+    .room-description {
+      color: #666666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .room-amenities {
+      list-style: none;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 15px 0;
+      margin-bottom: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .room-amenities li {
+      font-size: 0.82rem;
+      color: var(--med-blue);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      text-align: center;
+      padding: 12px 24px;
+      background-color: transparent;
+      color: var(--charcoal);
+      border: 1px solid var(--charcoal);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: auto;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--med-blue);
+      border-color: var(--med-blue);
+      color: #FFFFFF;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; 
+      top: 0;
+      width: 100%; 
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: block;
+      opacity: 1;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 85vh;
+      position: absolute;
+      top: 50%; 
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 6px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      object-fit: contain;
+    }
+
+    .close {
+      position: absolute;
+      top: 25px; 
+      right: 40px;
+      color: #FFFFFF;
+      font-size: 40px;
+      font-weight: 300;
+      cursor: pointer;
+      z-index: 2001;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: var(--terracotta);
+    }
+
+    img.clickable { 
+      cursor: pointer; 
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--charcoal);
+      color: #FFFFFF;
+      padding: 80px 0 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      text-align: left;
+    }
+
+    .footer-brand h2 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 15px;
+    }
+
+    .footer-brand p {
+      color: #A0A0A0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+      color: var(--terracotta);
+    }
+
+    .footer-col ul { 
+      list-style: none; 
+    }
+    
+    .footer-col ul li { 
+      margin-bottom: 12px; 
+    }
+
+    .footer-col ul li a {
+      color: #C0C0C0;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col ul li a:hover { 
+      color: #FFFFFF; 
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 30px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      color: #888888;
+      font-size: 0.8rem;
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 1024px) {
+      .feature-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .feature-text .gallery-description,
+      .feature-text .section-subtitle,
+      .feature-text .section-title {
+        text-align: center;
+      }
+
+      .spa-slider-wrapper {
+        max-width: 100%;
+        height: 380px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-bar {
+        padding: 20px;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background-color: var(--charcoal);
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-reserve {
+        padding: 10px 16px;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero-container">
+    <nav class="nav-bar">
+      <div class="brand-logo">
+        <a href="homepage1.html">CASA MAISON BLEUE</a>
+      </div>
+
+      <div class="nav-right-group">
+        <div class="nav-links" id="navLinks">
+          <a href="about.html">About Us</a>
+          <a href="help.html">Help Center</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
+
+        <a href="book1.html" class="btn-reserve">Reserve Your Stay</a>
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">&#9776;</button>
+      </div>
+    </nav>
+
+    <div class="hero-center-content">
+      <span class="subtitle">A Private Seaside Sanctuary</span>
+      <h1>Where Time Slows Down</h1>
+    </div>
+
+    <div></div>
+  </header>
+
+  <!-- ROOMS GALLERY SECTION -->
+  <section class="gallery">
+    <div class="container">
+      <h3 class="section-subtitle">Our Rooms</h3>
+      <h2 class="section-title">Rooms, Suites & Penthouse</h2>
+      <p class="gallery-description">
+        At Casa Maison Bleue, our sun-drenched accommodations range from the intimate Riviera Standard Room with its wrought-iron French balcony and olive wood finishes, to the tranquil Wellness Suite featuring a custom mosaic alcove and private spa shower, the multi-level Bougainvillea Suite complete with an oceanfront plunge pool, and the majestic Azure Penthouse offering 360-degree coastal views, a private sky pool, an outdoor stone fireplace, and an in-suite spa room—each thoughtfully curated with signature blue velvet accents, organic sea-salt amenities, and local welcome treats to deliver an unforgettable island sanctuary overlooking Bacuit Bay.
+      </p>
+
+      <div class="rooms-grid">
+        <article class="room-card">
+          <div class="room-img-container">
+            <img src="room2.png" alt="Riviera Standard Room" class="room-img clickable">
+          </div>
+          <div class="room-details">
+            <span class="room-tag">Cozy & Elegant</span>
+            <h3 class="room-title">Riviera Standard Room</h3>
+            <p class="room-description">Features double-leaf blue shutters opening to a French balcony, custom olive wood headboard, and tranquil garden courtyard views.</p>
+            <ul class="room-amenities">
+              <li>• French Balcony</li>
+              <li>• Blue Velvet Accents</li>
+              <li>• Welcome Basket</li>
+            </ul>
+            <a href="room1.html" class="btn-secondary">Explore Room</a>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-img-container">
+            <img src="room1.png" alt="The Bougainvillea Suite" class="room-img clickable">
+          </div>
+          <div class="room-details">
+            <span class="room-tag">Oceanfront Sanctuary</span>
+            <h3 class="room-title">The Bougainvillea Suite</h3>
+            <p class="room-description">Multi-level seaside suite with full fold-out doors leading to a private terrace, cascading plunge pool, and shaded daybed.</p>
+            <ul class="room-amenities">
+              <li>• Private Plunge Pool</li>
+              <li>• Ocean View</li>
+              <li>• Daybed</li>
+            </ul>
+            <a href="room2.html" class="btn-secondary">Explore Suite</a>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-img-container">
+            <img src="room3.png" alt="The Azure Penthouse" class="room-img clickable">
+          </div>
+          <div class="room-details">
+            <span class="room-tag">Top-Floor Luxury</span>
+            <h3 class="room-title">The Azure Penthouse</h3>
+            <p class="room-description">Occupying the entire top floor, featuring a wrap-around terrace, private sky pool, outdoor stone fireplace, and in-suite spa room.</p>
+            <ul class="room-amenities">
+              <li>• Private Sky Pool</li>
+              <li>• 360° Terrace</li>
+              <li>• In-Suite Spa</li>
+            </ul>
+            <a href="room3.html" class="btn-secondary">Explore Penthouse</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPA SECTION -->
+  <section class="feature-section bg-gray">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="spa-slider-wrapper">
+          <div class="spa-slide active-slide">
+            <img src="room4.png" alt="Luxury Spa & Wellness Sanctuary 1" class="clickable">
+          </div>
+          <div class="spa-slide">
+            <img src="room4_F.jpg" alt="Luxury Spa & Wellness Sanctuary 2" class="clickable">
+          </div>
+          <button class="slider-btn prev-btn" aria-label="Previous Slide">&#10094;</button>
+          <button class="slider-btn next-btn" aria-label="Next Slide">&#10095;</button>
+        </div>
+
+        <div class="feature-text">
+          <h3 class="section-subtitle">Wellness</h3>
+          <h2 class="section-title">Our Luxury Spa & Wellness Sanctuary</h2>
+          <p class="gallery-description">
+            Step into a world of deep rejuvenation at our sanctuary, inspired by traditional Mediterranean bathhouses and tropical wellness rituals. Designed to soothe the senses and restore balance, our spa experience centers around natural stone finishes, soft-glow ambient lighting, and bespoke wellness rituals. Guests can unwind with organic botanical sea-salt treatments, custom aromatherapy infusions, and private rejuvenation sessions tailored to elevate your island escape.
+          </p>
+          <a href="spa.html" class="btn-secondary">EXPLORE LUXURY SPA</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTAURANT SECTION -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="spa-slider-wrapper">
+          <div class="spa-slide active-slide">
+            <img src="resto.png" alt="Restaurant & Fine Dining 1" class="clickable">
+          </div>
+          <div class="spa-slide">
+            <img src="resto1.png" alt="Restaurant & Fine Dining 2" class="clickable">
+          </div>
+          <button class="slider-btn prev-btn" aria-label="Previous Slide">&#10094;</button>
+          <button class="slider-btn next-btn" aria-label="Next Slide">&#10095;</button>
+        </div>
+
+        <div class="feature-text">
+          <h3 class="section-subtitle">Fine Dining</h3>
+          <h2 class="section-title">Restaurant & Fine Dining</h2>
+          <p class="gallery-description">
+            Perched on the dramatic limestone cliffs of Palawan overlooking the turquoise waters of Bacuit Bay, <strong>Casa Maison Bleue Fine Dining</strong> offers a culinary journey where European elegance meets tropical refinement. Enjoy an unforgettable evening on our open-air terrace enveloped in warm lantern light, crisp white linens, and sweeping sunset vistas.
+            <br><br>
+            Our menu pairs the finest locally-sourced Palawan seafood and tropical ingredients with classic French-Mediterranean techniques and a sommelier-curated collection of rare vintages. Whether dining under the stars or watching the sun sink into the ocean, every detail is crafted for an intimate, world-class dining experience.
+          </p>
+          <a href="resto.html" class="btn-secondary">EXPLORE FINE DINING</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE LIGHTBOX MODAL -->
+  <div id="imageModal" class="modal" role="dialog" aria-hidden="true">
+    <span class="close" aria-label="Close modal">&times;</span>
+    <img class="modal-content" id="expandedImg" alt="Enlarged View">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>CASA MAISON BLEUE</h2>
+          <p>A luxury cliffside sanctuary blending European refinement with the breathtaking island beauty of El Nido, Palawan.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Mission</h4>
+          <p style="color: #C0C0C0; font-size: 0.9rem; line-height: 1.6;">
+            To provide an unparalleled tropical sanctuary where guests can disconnect, rejuvenate, and experience timeless coastal elegance in absolute privacy.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Socials</h4>
+          <ul>
+            <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Location</h4>
+          <p style="color: #A0A0A0; font-size: 0.85rem; line-height: 1.5;">
+            Cliffside Drive, Sitio Horizon<br>
+            Brgy. Corong-Corong, El Nido<br>
+            Palawan, Philippines
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Casa Maison Bleue Hotel. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. LIGHTBOX MODAL LOGIC
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("expandedImg");
+      const closeBtn = document.querySelector(".modal .close");
+      const clickableImages = document.querySelectorAll("img.clickable");
+
+      const openModal = (imgElement) => {
+        modal.style.display = "block";
+        setTimeout(() => modal.classList.add("show"), 10);
+        modalImg.src = imgElement.src;
+        modalImg.alt = imgElement.alt;
+        modal.setAttribute("aria-hidden", "false");
+      };
+
+      const closeModal = () => {
+        modal.classList.remove("show");
+        setTimeout(() => {
+          modal.style.display = "none";
+          modalImg.src = "";
+        }, 300);
+        modal.setAttribute("aria-hidden", "true");
+      };
+
+      clickableImages.forEach(img => {
+        img.addEventListener("click", () => openModal(img));
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("show")) closeModal();
+      });
+
+      // 2. IMAGE SLIDER LOGIC
+      const sliderWrappers = document.querySelectorAll(".spa-slider-wrapper");
+
+      sliderWrappers.forEach(wrapper => {
+        const prevBtn = wrapper.querySelector(".prev-btn");
+        const nextBtn = wrapper.querySelector(".next-btn");
+
+        const moveSlide = (direction) => {
+          const slides = wrapper.querySelectorAll(".spa-slide");
+          let currentIndex = -1;
+
+          slides.forEach((slide, index) => {
+            if (slide.classList.contains("active-slide")) {
+              currentIndex = index;
+            }
+          });
+
+          if (currentIndex !== -1) {
+            slides[currentIndex].classList.remove("active-slide");
+            let nextIndex = currentIndex + direction;
+
+            if (nextIndex >= slides.length) nextIndex = 0;
+            if (nextIndex < 0) nextIndex = slides.length - 1;
+
+            slides[nextIndex].classList.add("active-slide");
+          }
+        };
+
+        if (prevBtn) prevBtn.addEventListener("click", () => moveSlide(-1));
+        if (nextBtn) nextBtn.addEventListener("click", () => moveSlide(1));
+      });
+
+      // 3. MOBILE MENU TOGGLE
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+    });
+  </script>
+</body>
+</html>

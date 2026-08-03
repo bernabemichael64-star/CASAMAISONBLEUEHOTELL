@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve Your Stay | Casa Maison Bleue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --med-blue: #0047AB;
+      --med-blue-dark: #003380;
+      --terracotta: #D98A6C;
+      --sand-bg: #FDFBF7;
+      --charcoal: #1F2421;
+      --slate-gray: #555B6E;
+      --light-gray: #EAE6DF;
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Lato', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      background-color: var(--sand-bg);
+      scroll-behavior: smooth;
+    }
+
+    /* Transparent Header */
+    header {
+      background: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 50px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .brand-logo a {
+      color: #FFFFFF;
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .brand-logo a:hover {
+      color: var(--terracotta);
+    }
+
+    .nav-links a {
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      margin-right: 30px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--terracotta);
+    }
+
+    .btn-reserve {
+      background-color: var(--med-blue);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-reserve:hover {
+      background-color: var(--terracotta);
+    }
+
+    /* Hero Background Wrapper */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)),
+                  url('BG.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 80px;
+    }
+
+    /* Form Container */
+    .registration-wrapper {
+      width: 100%;
+      max-width: 520px;
+      margin: 140px auto 40px auto;
+      border-radius: 12px;
+      background-color: #FFFFFF;
+      padding: 45px 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--light-gray);
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-title {
+      color: var(--med-blue);
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .registration-wrapper .subtext {
+      text-align: center;
+      color: var(--slate-gray);
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+    }
+
+    .registration-wrapper form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+    }
+
+    .date-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .registration-wrapper input[type="text"],
+    .registration-wrapper input[type="tel"],
+    .registration-wrapper input[type="email"],
+    .registration-wrapper input[type="date"],
+    .registration-wrapper select,
+    .registration-wrapper textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--light-gray);
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background-color: #FAFAFA;
+      outline: none;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .registration-wrapper input:focus,
+    .registration-wrapper select:focus,
+    .registration-wrapper textarea:focus {
+      border-color: var(--med-blue);
+      background-color: #FFFFFF;
+    }
+
+    .registration-wrapper textarea {
+      height: 90px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--med-blue);
+      color: #FFFFFF;
+      padding: 16px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--med-blue-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--charcoal);
+      color: #FFFFFF;
+      padding: 70px 0 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand h2 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 15px;
+    }
+
+    .footer-brand p {
+      color: #A0A0A0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+      color: var(--terracotta);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+      color: #C0C0C0;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 25px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      color: #888888;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 20px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .registration-wrapper {
+        width: 90%;
+        margin-top: 110px;
+        padding: 30px 20px;
+      }
+      .date-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Hero Section -->
+  <div class="hero-container">
+    
+    <!-- Transparent Top Header Navigation -->
+    <header>
+      <div class="nav-bar">
+        <div class="brand-logo">
+          <a href="index.html">Casa Maison Bleue</a>
+        </div>
+
+        <nav class="nav-links">
+          <a href="about.html">About Us</a>
+          <a href="help.html">Help Center</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="feedback.html">Feedback</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="researve.html" class="btn-reserve">Reserve Your Stay</a>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Reservation Card Form -->
+    <div class="registration-wrapper">
+      <h2 class="section-title">RESERVE YOUR STAY</h2>
+      <p class="subtext">Please complete your booking details below to secure your sanctuary.</p>
+
+      <form action="done.html" method="GET">
+        <!-- Guest Info -->
+        <div class="form-group">
+          <label for="full-name">Full Name *</label>
+          <input type="text" id="full-name" placeholder="John Dave D. Santos" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email-addr">Email Address *</label>
+          <input type="email" id="email-addr" placeholder="name@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone-num">Phone Number *</label>
+          <input type="tel" id="phone-num" placeholder="+63 900 000 0000" required>
+        </div>
+
+        <!-- Room Selection -->
+        <div class="form-group">
+          <label for="room-type">Select Accommodation *</label>
+          <select id="room-type" name="room-type" required>
+            <option value="" disabled selected>Choose your experience...</option>
+            <option value="riviera-standard">Riviera Standard Room</option>
+            <option value="bougainvillea">The Bougainvillea Suite</option>
+            <option value="azure-penthouse">The Azure Penthouse</option>
+            <option value="spa-pass">Luxury Spa & Wellness Sanctuary</option>
+            <option value="fine-dining">Restaurant & Fine Dining Experience</option>
+          </select>
+        </div>
+
+        <!-- Dates -->
+        <div class="date-grid">
+          <div class="form-group">
+            <label for="check-in">Check-In *</label>
+            <input type="date" id="check-in" required>
+          </div>
+          <div class="form-group">
+            <label for="check-out">Check-Out *</label>
+            <input type="date" id="check-out" required>
+          </div>
+        </div>
+
+        <!-- Guests -->
+        <div class="form-group">
+          <label for="guests">Number of Guests *</label>
+          <select id="guests" name="guests" required>
+            <option value="" disabled selected>Select number of guests</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5+">5+ Guests (VIP Suite Required)</option>
+          </select>
+        </div>
+
+        <!-- Special Requests -->
+        <div class="form-group">
+          <label for="requests">Special Requests</label>
+          <textarea id="requests" placeholder="Helicopter transfer, dietary preferences, anniversary arrangements..."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Confirm Reservation</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>CASA MAISON BLEUE</h2>
+          <p>A luxury cliffside sanctuary blending European refinement with the breathtaking island beauty of El Nido, Palawan.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Mission</h4>
+          <p style="color: #C0C0C0; font-size: 0.9rem; line-height: 1.6;">
+            To provide an unparalleled tropical sanctuary where guests can disconnect, rejuvenate, and experience timeless coastal elegance.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Socials</h4>
+          <ul>
+            <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Location</h4>
+          <p style="color: #A0A0A0; font-size: 0.85rem; line-height: 1.5;">
+            Cliffside Drive, Sitio Horizon<br>
+            Brgy. Corong-Corong, El Nido<br>
+            Palawan, Philippines
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Casa Maison Bleue Hotel. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
