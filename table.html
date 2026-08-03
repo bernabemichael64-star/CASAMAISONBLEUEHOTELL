@@ -204,6 +204,94 @@
       color: white;
     }
 
+    /* Modal Styling */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-box {
+      background: #FFFFFF;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      font-family: 'Poppins', sans-serif;
+      animation: popup 0.3s ease-out;
+    }
+
+    @keyframes popup {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-box h3 {
+      font-family: var(--font-serif);
+      color: var(--med-blue);
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+
+    .modal-details {
+      background: #F4F7FB;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .modal-details strong {
+      color: var(--charcoal);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-modal-cancel {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #ccc;
+      background: transparent;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-modal-cancel:hover {
+      background: #eee;
+    }
+
+    .btn-modal-confirm {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: var(--med-blue);
+      color: white;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-modal-confirm:hover {
+      background: #003399;
+    }
+
     @media (max-width: 768px) {
       .nav-bar {
         padding: 20px;
@@ -242,48 +330,102 @@
       <h2 class="section-title">Reserve Your Table</h2>
       <p>L’Horizon Restaurant & Sunset Bar — El Nido</p>
 
-      <form action="#" method="POST">
+      <form id="reservationForm">
         <!-- Guest Info -->
-        <input type="text" class="input-name" placeholder="Full Name" required>
-        <input type="email" class="input-email" placeholder="Email Address" required>
-        <input type="tel" class="input-contact" placeholder="Phone Number" required>
+        <input type="text" id="guestName" class="input-name" placeholder="Full Name" required>
+        <input type="email" id="guestEmail" class="input-email" placeholder="Email Address" required>
+        <input type="tel" id="guestPhone" class="input-contact" placeholder="Phone Number" required>
 
         <!-- Seating Area Selection -->
-        <select name="seating-area" required>
+        <select id="seatingArea" name="seating-area" required>
           <option value="" disabled selected>Select Preferred Seating Area</option>
-          <option value="cliffside-terrace">Cliffside Sunset Terrace (Outdoor)</option>
-          <option value="main-dining">L'Horizon Main Dining Room</option>
-          <option value="chef-table">Private Chef's Degustation Table</option>
-          <option value="sunset-bar">Sunset Bar Lounge</option>
+          <option value="Cliffside Sunset Terrace (Outdoor)">Cliffside Sunset Terrace (Outdoor)</option>
+          <option value="L'Horizon Main Dining Room">L'Horizon Main Dining Room</option>
+          <option value="Private Chef's Degustation Table">Private Chef's Degustation Table</option>
+          <option value="Sunset Bar Lounge">Sunset Bar Lounge</option>
         </select>
 
         <!-- Date and Time -->
         <div style="display: flex; gap: 10px;">
-          <input type="date" class="input-date" required title="Reservation Date">
-          <input type="time" class="input-time" required title="Reservation Time">
+          <input type="date" id="resDate" class="input-date" required title="Reservation Date">
+          <input type="time" id="resTime" class="input-time" required title="Reservation Time">
         </div>
 
         <!-- Party Size -->
-        <select name="guests" required>
+        <select id="partySize" name="guests" required>
           <option value="" disabled selected>Party Size (Number of Guests)</option>
-          <option value="1">1 Guest (Solo Dining)</option>
-          <option value="2">2 Guests (Table for Two)</option>
-          <option value="3">3 Guests</option>
-          <option value="4">4 Guests</option>
-          <option value="5-6">5-6 Guests</option>
-          <option value="7+">7+ Guests (Private Event)</option>
+          <option value="1 Guest (Solo Dining)">1 Guest (Solo Dining)</option>
+          <option value="2 Guests (Table for Two)">2 Guests (Table for Two)</option>
+          <option value="3 Guests">3 Guests</option>
+          <option value="4 Guests">4 Guests</option>
+          <option value="5-6 Guests">5-6 Guests</option>
+          <option value="7+ Guests (Private Event)">7+ Guests (Private Event)</option>
         </select>
 
         <!-- Dietary Preferences / Requests -->
         <textarea placeholder="Dietary preferences, allergies, or special celebrations (e.g., Anniversary, Birthday)..." style="width:100%; border:2px solid cornflowerblue; border-radius:10px; padding:10px; font-family:'Poppins', sans-serif; resize:vertical; height:80px;"></textarea>
 
         <!-- Submit Button -->
-        <a href="done.html" style="text-decoration: none; width: 100%; display: block;">
-          <button type="button" class="btn-submit">Confirm Table Reservation</button>
-        </a>
+        <button type="submit" class="btn-submit">Confirm Table Reservation</button>
       </form>
     </div>
   </div>
+
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal-box">
+      <h3>Confirm Your Details</h3>
+      <div class="modal-details" id="modalDetails">
+        <!-- Details dynamically populated by JS -->
+      </div>
+      <div class="modal-actions">
+        <button class="btn-modal-cancel" id="cancelBtn" type="button">Edit</button>
+        <button class="btn-modal-confirm" id="finalConfirmBtn" type="button">Confirm & Book</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('reservationForm');
+    const modal = document.getElementById('confirmModal');
+    const modalDetails = document.getElementById('modalDetails');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const finalConfirmBtn = document.getElementById('finalConfirmBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop instant redirect/submit
+
+      // Gather form inputs
+      const name = document.getElementById('guestName').value;
+      const email = document.getElementById('guestEmail').value;
+      const area = document.getElementById('seatingArea').value;
+      const date = document.getElementById('resDate').value;
+      const time = document.getElementById('resTime').value;
+      const guests = document.getElementById('partySize').value;
+
+      // Populate Modal Summary
+      modalDetails.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Area:</strong> ${area}</p>
+        <p><strong>Date & Time:</strong> ${date} at ${time}</p>
+        <p><strong>Guests:</strong> ${guests}</p>
+      `;
+
+      // Show Modal
+      modal.style.display = 'flex';
+    });
+
+    // Close Modal on Edit
+    cancelBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+
+    // Finalize Reservation -> Go to done.html
+    finalConfirmBtn.addEventListener('click', function() {
+      window.location.href = 'done.html';
+    });
+  </script>
 
 </body>
 </html>
