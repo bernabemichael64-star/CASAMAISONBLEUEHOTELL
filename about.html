@@ -17,6 +17,7 @@
       --font-sans: 'Lato', sans-serif;
       --charcoal: #1F2421;
       --light-bg: #FAFAFA;
+      --card-bg: #FFFFFF;
     }
 
     * {
@@ -37,8 +38,12 @@
     .hero-container {
       position: relative;
       width: 100%;
-      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+      min-height: 50vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
                   url('BG.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .nav-bar {
@@ -47,7 +52,7 @@
       align-items: center;
       padding: 25px 40px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0));
       z-index: 100;
     }
 
@@ -113,18 +118,29 @@
       background-color: var(--terracotta);
     }
 
-    /* About Us Section Styles */
-    .about-section {
-      background-color: var(--light-bg);
-      padding: 90px 20px;
+    /* Hero Text Banner */
+    .hero-title-area {
       text-align: center;
+      color: #FFFFFF;
+      padding: 60px 20px 80px 20px;
     }
 
-    .about-container {
-      max-width: 1000px;
-      margin: 0 auto;
+    .hero-title-area h1 {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
+    .hero-title-area p {
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    /* Common Section Formatting */
     .section-subtitle {
       display: block;
       font-family: var(--font-sans);
@@ -136,12 +152,24 @@
       font-weight: 700;
     }
 
-    .about-section .section-title {
+    .section-title {
       font-family: var(--font-serif);
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       color: var(--med-blue);
       margin-bottom: 25px;
       letter-spacing: 0.05em;
+    }
+
+    /* About Us Intro Section */
+    .about-section {
+      background-color: var(--light-bg);
+      padding: 90px 20px;
+      text-align: center;
+    }
+
+    .about-container {
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .about-description {
@@ -159,7 +187,7 @@
     }
 
     .highlight-item {
-      background-color: #FFFFFF;
+      background-color: var(--card-bg);
       border: 1px solid #EFECE6;
       padding: 35px 25px;
       border-radius: 12px;
@@ -184,6 +212,136 @@
       font-size: 0.95rem;
       color: #666666;
       line-height: 1.6;
+    }
+
+    /* Story Section (NEW) */
+    .story-section {
+      padding: 90px 20px;
+      background-color: #FFFFFF;
+    }
+
+    .story-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .story-content h2 {
+      text-align: left;
+    }
+
+    .story-content p {
+      color: #555555;
+      margin-bottom: 18px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .story-box {
+      background: linear-gradient(135deg, var(--med-blue), #002D62);
+      color: #FFFFFF;
+      padding: 45px 35px;
+      border-radius: 12px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .story-box h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--terracotta);
+    }
+
+    .story-box p {
+      color: #E0E0E0;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* Sustainability & Philosophy Grid (NEW) */
+    .philosophy-section {
+      background-color: #F4F7FB;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .philosophy-grid {
+      max-width: 1000px;
+      margin: 40px auto 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .philosophy-card {
+      background: #FFFFFF;
+      padding: 30px 20px;
+      border-radius: 10px;
+      border-top: 4px solid var(--terracotta);
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .philosophy-card h4 {
+      font-family: var(--font-serif);
+      color: var(--med-blue);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .philosophy-card p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Call to Action Banner (NEW) */
+    .cta-banner {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('BG.png') center/cover no-repeat;
+      padding: 80px 20px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    .cta-banner h2 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      letter-spacing: 0.05em;
+    }
+
+    .cta-banner p {
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      color: #E0E0E0;
+      font-size: 1rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      border: 2px solid #FFFFFF;
+      color: #FFFFFF;
+      padding: 12px 26px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: #FFFFFF;
+      color: var(--charcoal);
     }
 
     /* Footer Styling */
@@ -269,6 +427,9 @@
 
     /* Responsive Design */
     @media (max-width: 900px) {
+      .story-wrapper {
+        grid-template-columns: 1fr;
+      }
       .footer-grid {
         grid-template-columns: 1fr 1fr;
         gap: 30px;
@@ -284,11 +445,15 @@
         display: none;
       }
 
-      .about-section {
+      .hero-title-area h1 {
+        font-size: 2.2rem;
+      }
+
+      .about-section, .story-section, .philosophy-section {
         padding: 60px 20px;
       }
 
-      .about-section .section-title {
+      .section-title {
         font-size: 1.8rem;
       }
     }
@@ -321,13 +486,19 @@
         <a href="book1.html" class="btn-reserve">Reserve Your Stay</a>
       </div>
     </nav>
+
+    <!-- Page Title Banner -->
+    <div class="hero-title-area">
+      <p>Discover Our Sanctuary</p>
+      <h1>Our Story & Legacy</h1>
+    </div>
   </header>
     
   <!-- About Us Main Section -->
   <main class="about-section" id="about-us">
     <div class="about-container">
       <span class="section-subtitle">Welcome to Island Paradise</span>
-      <h1 class="section-title">About Casa Maison Bleue</h1>
+      <h2 class="section-title">About Casa Maison Bleue</h2>
       <p class="about-description">
         Perched atop the dramatic limestone cliffs of El Nido, Palawan, Casa Maison Bleue is a sanctuary where French Riviera refinement seamlessly blends with tropical Philippine paradise. Overlooking the crystal-clear turquoise waters of Bacuit Bay, our haven offers an unmatched retreat for discerning travelers seeking serenity, sunset views, and world-class hospitality.
       </p>
@@ -339,7 +510,7 @@
         </div>
         <div class="highlight-item">
           <h3>Cliffside Fine Dining</h3>
-          <p>Savor French-Mediterranean culinary artistry infused with fresh Palawan seafood and local tropical produce.</p>
+          <p>Savor French-Mediterranean culinary artistry infused with fresh Palawan seafood at L'Horizon Restaurant & Sunset Bar.</p>
         </div>
         <div class="highlight-item">
           <h3>Unmatched Serenity</h3>
@@ -348,6 +519,65 @@
       </div>
     </div>
   </main>
+
+  <!-- Our Heritage & Philosophy Section (NEW) -->
+  <section class="story-section">
+    <div class="story-wrapper">
+      <div class="story-content">
+        <span class="section-subtitle">A Harmony of Two Worlds</span>
+        <h2 class="section-title">The Heritage</h2>
+        <p>
+          Founded with a vision to marry European coastal elegance with authentic Palawan warmth, Casa Maison Bleue stands as an architectural tribute to timeless luxury. Every detail—from terracotta tilework to our signature deep blue textiles—reflects a passion for curated living.
+        </p>
+        <p>
+          Whether sipping vintage champagne at our cliffside Sunset Bar or exploring hidden lagoons in private yachts, our guests experience a refined escape designed to restore mind and spirit.
+        </p>
+      </div>
+      
+      <div class="story-box">
+        <h3>The Culinary Vision</h3>
+        <p>
+          At <strong>L’Horizon Restaurant</strong>, our executive culinary team reimagines classic Mediterranean recipes using locally harvested island spices, organic produce, and daily catches straight from Bacuit Bay.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sustainability & Commitments (NEW) -->
+  <section class="philosophy-section">
+    <div class="about-container">
+      <span class="section-subtitle">Preserving Paradise</span>
+      <h2 class="section-title">Our Environmental Commitment</h2>
+      <p style="color: #666; max-width: 700px; margin: 0 auto;">
+        El Nido is one of the world's most delicate marine ecosystems. We are committed to protecting this natural treasure for generations to come.
+      </p>
+
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <h4>Zero Single-Use Plastics</h4>
+          <p>We utilize glass bottling plants and biodegradable materials across all resort amenities.</p>
+        </div>
+        <div class="philosophy-card">
+          <h4>Coral Reef Protection</h4>
+          <p>Partnering with local marine biologists to sponsor and protect Bacuit Bay’s coral sanctuaries.</p>
+        </div>
+        <div class="philosophy-card">
+          <h4>Farm-to-Table Dining</h4>
+          <p>Supporting Palawan farmers and ethical fisheries to reduce footprint and support local communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action (NEW) -->
+  <section class="cta-banner">
+    <h2>Experience Casa Maison Bleue</h2>
+    <p>Your cliffside paradise awaits in El Nido. Reserve your suite or table today for an unforgettable retreat.</p>
+    <div class="cta-buttons">
+      <a href="book1.html" class="btn-reserve">Reserve Your Stay</a>
+      <a href="researve.html" class="btn-secondary">Book a Dining Table</a>
+    </div>
+  </section>
 
   <!-- Standard Footer -->
   <footer>
